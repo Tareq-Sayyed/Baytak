@@ -1,6 +1,6 @@
-import './Avatar.css';
+import "./Avatar.css";
 
-const Avatar = props => {
+const Avatar = (props) => {
   return (
     <div className={`avatar ${props.className}`} style={props.style}>
       <img
