@@ -1,20 +1,32 @@
+// Packages
+import { Link } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
+// Components and stylings.
 import "./MainNavigation.css";
 import MainHeader from "./MainHeader";
-import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
-import React from "react";
+import BackDrop from "../UIElements/Backdrop";
+
 const MainNavigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <React.Fragment>
-      <SideDrawer>
-        <nav className="main-navigation__drawer-nav">
-          <NavLinks />
-        </nav>
-      </SideDrawer>
+      {isOpen && <BackDrop onClick={handleClick} />}
+        <SideDrawer show = {isOpen} onClick = {handleClick}>
+          <nav className="main-navigation__drawer-nav">
+            <NavLinks />
+          </nav>
+        </SideDrawer>
+      
 
       <MainHeader>
-        <button className="main-navigation__menu-btn">
+        <button className="main-navigation__menu-btn" onClick={handleClick}>
           <span />
           <span />
           <span />
